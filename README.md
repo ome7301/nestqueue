@@ -1,4 +1,4 @@
-# NesQueue
+# NESTQueue
 
 An in-house ticket management system.
 
