@@ -2,9 +2,6 @@
 
 An in-house ticket management system.
 
-> [!CAUTION]
-> As of now, there is no client yet. Only the server is available.
-
 ## Prerequisites
 
 - [go](https://go.dev/doc/install): to build and run the server
@@ -15,13 +12,21 @@ An in-house ticket management system.
 
 ### 1. Download the repository
 
+Clone the repository.
+
 ```sh
 git clone https://github.com/digitalnest-wit/nestqueue
 ```
 
+Navigate to `nestqueue`.
+
+```sh
+cd nestqueue
+```
+
 ### 2. Install the server dependencies
 
-This command downloads all the dependent modules for the server.
+This command downloads all the dependent modules for the server. No need to navigate to `server`.
 
 ```sh
 go -C server mod download
@@ -29,7 +34,7 @@ go -C server mod download
 
 ### 3. Install the client dependencies
 
-Navigate to the client directory.
+Navigate to the `client` directory.
 
 ```sh
 cd client
@@ -53,22 +58,16 @@ MONGO_URI='YOUR_URI_HERE'
 
 ### 2. Start the server
 
-Use any port you'd like. Default is 3000.
+In the `server` directory, run this command.
 
 ```sh
-go -C server run cmd/server/main.go --port 3000
+make
 ```
 
 ### 3. Start the client
 
-Navigate to the client directory.
+In the `client` directory, run this command.
 
 ```sh
-cd client
-```
-
-Run the client using turbopack. The default port is 8080.
-
-```sh
-npm run dev
+make
 ```
