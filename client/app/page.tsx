@@ -1,16 +1,26 @@
-import Image from "next/image";
+"use client";
+
+import { useTicketsQuery } from "@/lib/hooks/queries/ticket";
+import ticket from "@/lib/types/ticket";
+import TicketsTable from "@/components/tickets/table";
+import { Ticket, Tickets } from "lucide-react";
+import CreateTicketButton from "@/components/tickets/create-button";
 
 export default function Home() {
+  const { data: tickets, error: ticketsQueryError } = useTicketsQuery();
+  if (ticketsQueryError) {
+    return <div>Failed to load tickets.</div>;
+  }
+  if (!tickets) {
+    return <div>Loading tickets....</div>;
+  }
+
   return (
-    <div className="h-full bg-gray-900 text-white p-5">
-      <Image
-        className="mb-3"
-        src="/logo-digital-nest.png"
-        alt="Digital NEST logo"
-        width={30}
-        height={30}
-      />
-      <p>Welcome back to Web Development!</p>
-    </div>
+    <>
+      <div className="flex justify-end m-3">
+        <CreateTicketButton />
+      </div>
+      <TicketsTable tickets={tickets} />
+    </>
   );
 }
