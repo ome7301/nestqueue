@@ -15,28 +15,35 @@ export default function TicketView({ ticket, onDismiss }: TicketViewProps) {
   const updatedAt = new Date(ticket.updatedAt).toDateString();
 
   return (
-    <div className="">
+    <div className="flex flex-col gap-2 m-2">
       <p className="rounded-2xl bg-black p-2 text-2xl font-bold text-white">
         Client Ticket
       </p>
-      <p className="text-red-500">{ticket.title}</p>
-      <p className="text-orange-500">{ticket.priority}</p>
-      <p className="text-yellow-400">{ticket.description}</p>
-      <p className="text-green-500">{ticket.category}</p>
-      <p className="text-blue-500">{ticket.site}</p>
+      <div className="">
+        <p className="font-bold">Description:</p>
+        <p>{ticket.description}</p>
+      </div>
+      <div className="flex items-center gap-2">
+        <p className="font-bold">Category:</p>
+        <p>{ticket.category}</p>
+      </div>
+      <div className="flex items-center gap-2">
+        <p className="font-bold">Site:</p>
+        <p>{ticket.site}</p>
+      </div>
 
       {ticket.assignedTo ? (
-        <p className="text-indigo-600">Assigned to {ticket.assignedTo}</p>
+        <p>Assigned to {ticket.assignedTo}</p>
       ) : (
-        <p className="text-indigo-600">Unassigned</p>
+        <p>Unassigned</p>
       )}
 
-      <p className="text-violet-600">Created by {ticket.createdBy}</p>
-      <p className="text-purple-800">Created on {createdOn}</p>
-      <p className="text-pink-800">Last modified on {updatedAt}</p>
+      <p className="text">Created by {ticket.createdBy}</p>
+      <p className="text">Created on {createdOn}</p>
+      <p className="text">Last modified on {updatedAt}</p>
 
       <Button
-        className="rounded-sm bg-amber-400 p-2 text-2xl text-white"
+        className="rounded-2xl bg-black p-2 text-2xl font-bold text-white"
         onClick={onDismiss}
       >
         Close
